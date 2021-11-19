@@ -15,7 +15,6 @@ export default function Home(){
   const handleSubmit = evt => {
     evt.preventDefault()
     pushLocation(`search/${keyword}`)
-    console.log(keyword)
   }
 
   const handleInputChange = evt => {

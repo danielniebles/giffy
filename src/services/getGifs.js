@@ -16,9 +16,9 @@ const onApiResponse = (apiResponse) => {
 
 }
 
-export default function getGifs({ keyword = "morty" } = {}) {
+export default function getGifs({ limit = 25, keyword = "morty", page = 0 } = {}) {
   return fetch(
-    `${BASE_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`
+    `${BASE_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * 25}&rating=g&lang=en`
   ).then((res) => res.json()
   .then(onApiResponse)
   );
