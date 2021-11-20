@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { Link, useLocation } from "wouter"
+import React, { useState } from "react"
+import { useLocation } from "wouter"
 import GifsList from "../../components/GifsList"
-import Category from "../../components/Category"
 import TrendingSearches from "../../components/TrendingSearches"
 import { useGifs } from "../../hooks/useGifs"
-
-const POPULAR = ["panda", "Tarja"]
 
 export default function Home(){
   const [ keyword, setKeyword ] = useState('')
   const [ ,pushLocation ] = useLocation()
-  const { loading, gifs } = useGifs()
+  const { gifs } = useGifs()
 
   const handleSubmit = evt => {
     evt.preventDefault()
