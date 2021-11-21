@@ -15,9 +15,10 @@ export function useGifs({ keyword } = { keyword: null }) {
 
     getGifs({ keyword: keywordToUse }).then((gifs) => {
       setGifs(gifs)
-      setLoading(false)
+
       localStorage.setItem('lastKeyword', keywordToUse)
     })
+    setLoading(false)
   }, [keyword, keywordToUse, setGifs])
 
   useEffect(() => {

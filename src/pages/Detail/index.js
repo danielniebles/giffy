@@ -1,5 +1,4 @@
 import React, { useContext } from "react"
-import StaticContext from "../../context/StaticContext"
 import GifsContext from "../../context/GifsContext"
 import Gif from '../../components/Gif'
 
