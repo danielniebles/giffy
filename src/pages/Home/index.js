@@ -1,5 +1,5 @@
-import SearchForm from "components/SearchForm"
 import React, { useCallback } from "react"
+import SearchForm from "../../components/SearchForm"
 import { useLocation } from "wouter"
 import GifsList from "../../components/GifsList"
 import TrendingSearches from "../../components/TrendingSearches"

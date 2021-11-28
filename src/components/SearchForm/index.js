@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 
-
 function SearchForm({ onSubmit }) {
   const [ keyword, setKeyword ] = useState('')
 

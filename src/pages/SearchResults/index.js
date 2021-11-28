@@ -1,8 +1,7 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef, useCallback, useEffect } from 'react'
 import GifsList from "components/GifsList/index";
 import { useGifs } from 'hooks/useGifs';
 import { useNearScreen } from 'hooks/useNearScreen';
-import { useEffect } from 'react/cjs/react.development';
 import debounce from "just-debounce-it"
 
 export default function SearchResults({ params }) {
@@ -15,9 +14,10 @@ export default function SearchResults({ params }) {
     }
   )
 
-  const debounceHandleNextPage = useCallback(debounce(() => {
-    setPage(prevPage => prevPage + 1)
-  }, 200), [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debounceHandleNextPage = useCallback(debounce(
+    () => setPage(prevPage => prevPage + 1), 200
+  ), [])
 
   useEffect(() => {
     if(isNearScreen) debounceHandleNextPage()
