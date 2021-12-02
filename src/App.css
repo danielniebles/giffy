@@ -17,6 +17,13 @@
   text-align: left;
 }
 
+.App-wrapper {
+	width: 100%;
+	max-width: 90rem;
+	margin: 0 auto;
+	padding: 0 0.5em;
+}
+
 .App-logo {
   margin: 10px auto;
   padding: 20px 0;
@@ -38,8 +45,21 @@
   align-items: flex-start;
 }
 
+@media screen and (min-width: 55rem){
+  .App-main{
+    flex-direction: initial;
+  }
+
+  .App-category{
+    position: sticky;
+    width: 40%;
+    max-width: 300px;
+  }
+}
+
 .App-results {
   flex-shrink: 2;
+  width: 100%;
 }
 
 .App-category {

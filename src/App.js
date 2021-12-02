@@ -25,6 +25,7 @@ function App() {
               <Route component={HomePage} path="/"></Route>
             </Suspense>
             <Route component={Detail} path="/gif/:id"></Route>
+            <Route component={() => <h1>Error :c</h1>} path="/error" />
           </GifsContextProvider>
         </section>
       </div>

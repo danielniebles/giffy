@@ -2,13 +2,12 @@ import React from 'react'
 import { Link } from 'wouter'
 import './Gif.css'
 
-function Gif({ title, url, id }) {
+function Gif({ title, url, id, index }) {
   return (
     <div className="Gif">
       <Link to={`/gif/${id}`} className='Gif-link'>
-        <a className="Gif-link" href={`#${id}`}>
-          <img alt={title} src={url}></img>
-        </a>
+        <h4>{title}</h4>
+        <img alt={title} src={url}></img>
       </Link>
     </div>
   )

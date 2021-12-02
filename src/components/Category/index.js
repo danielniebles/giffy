@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'wouter'
-
 import './Category.css'
 
 export default function Category({name, options = [], ...props}){
@@ -8,7 +7,7 @@ export default function Category({name, options = [], ...props}){
         <h3 className="Category-title">{name}</h3>
         <ul className="Category-list">
             {options.map((singleOption) => (
-                <li key={singleOption}>
+                <li key={singleOption} className="Category-list-item">
                     <Link
                         className="Category-link"
                         to={`/search/${singleOption}`}

@@ -1,6 +1,5 @@
 import { API_KEY, BASE_URL } from "./settings";
 
-
 const onApiResponse = (apiResponse) => {
   const { data } = apiResponse
 

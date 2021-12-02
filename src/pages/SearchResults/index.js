@@ -3,6 +3,7 @@ import GifsList from "components/GifsList/index";
 import { useGifs } from 'hooks/useGifs';
 import { useNearScreen } from 'hooks/useNearScreen';
 import debounce from "just-debounce-it"
+import { useSEO } from 'hooks/useSEO';
 
 export default function SearchResults({ params }) {
   const { keyword } = params
@@ -13,6 +14,8 @@ export default function SearchResults({ params }) {
       once: false
     }
   )
+  const title =  gifs ? `${gifs.length} resultados de ${keyword}` : ''
+  useSEO({ title })
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceHandleNextPage = useCallback(debounce(
