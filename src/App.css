@@ -40,6 +40,7 @@
 
 .App-results {
   flex-shrink: 2;
+  width: 100%;
 }
 
 .App-category {
