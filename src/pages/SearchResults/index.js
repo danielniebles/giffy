@@ -1,13 +1,14 @@
 import React, { useRef, useCallback, useEffect } from 'react'
-import GifsList from "components/GifsList/index";
+import GifsList from "components/GifsList";
 import { useGifs } from 'hooks/useGifs';
 import { useNearScreen } from 'hooks/useNearScreen';
 import debounce from "just-debounce-it"
 import { useSEO } from 'hooks/useSEO';
+import SearchForm from 'components/SearchForm';
 
 export default function SearchResults({ params }) {
-  const { keyword } = params
-  const { loading, gifs, setPage } = useGifs({ keyword })
+  const { keyword, rating = 'g' } = params
+  const { loading, gifs, setPage } = useGifs({ keyword, rating })
   const externalRef = useRef()
   const { isNearScreen } = useNearScreen(
     { externalRef: loading ? null : externalRef,
@@ -29,6 +30,7 @@ export default function SearchResults({ params }) {
   return (<>
     {loading ? <i>Cargando 😃</i> :
       <>
+        <SearchForm initialKeyword={keyword} initialRating={rating}/>
         <h3 className='App-title'>{decodeURI(keyword)}</h3>
         <GifsList gifs={gifs}></GifsList>
         <div id="visor" ref={externalRef}></div>

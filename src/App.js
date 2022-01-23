@@ -20,7 +20,7 @@ function App() {
             </figure>
           </Link>
           <GifsContextProvider>
-            <Route component={SearchResults} path="/search/:keyword" />
+            <Route component={SearchResults} path="/search/:keyword/:rating?" />
             <Suspense fallback={null}>
               <Route component={HomePage} path="/"></Route>
             </Suspense>
