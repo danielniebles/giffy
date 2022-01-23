@@ -4,8 +4,8 @@ import useForm from "./useForm";
 
 const RATINGS = ["g", "pg", "pg-13", "r"];
 
-function SearchForm({ initialKeyword = "", initialRating = "" }) {
-  const [location, pushLocation] = useLocation();
+function SearchForm({ initialKeyword = "", initialRating = "g" }) {
+  const [,pushLocation] = useLocation();
 
   const { keyword, rating, updateKeyword, updateRating } = useForm({
     initialKeyword,
@@ -14,11 +14,8 @@ function SearchForm({ initialKeyword = "", initialRating = "" }) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    pushLocation(
-      location.includes("search")
-        ? `${keyword}/${rating}`
-        : `search/${keyword}/${rating}`
-    );
+    pushLocation("/");
+    pushLocation(`search/${keyword}/${rating}`);
   };
 
   const handleInputChange = (evt) => {
