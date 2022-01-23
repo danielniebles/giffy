@@ -1,7 +1,7 @@
 import { API_KEY, BASE_URL } from "./settings";
 
 const onApiResponse = (apiResponse) => {
-  const { data } = apiResponse
+  const { data } = apiResponse;
 
   if (Array.isArray(data)) {
     const gifs = data.map((item) => {
@@ -9,16 +9,20 @@ const onApiResponse = (apiResponse) => {
       const { url } = images.downsized_medium;
       return { title, id, url };
     });
-    return gifs
+    return gifs;
   }
-  return []
+  return [];
+};
 
-}
-
-export default function getGifs({ limit = 10, keyword = "morty", page = 0 } = {}) {
+export default function getGifs({
+  limit = 10,
+  keyword = "morty",
+  page = 0,
+  rating = 'g',
+} = {}) {
   return fetch(
-    `${BASE_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`
-  ).then((res) => res.json()
-  .then(onApiResponse)
-  );
+    `${BASE_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
+      page * limit
+    }&rating=${rating}&lang=en`
+  ).then((res) => res.json().then(onApiResponse));
 }

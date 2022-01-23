@@ -1,23 +1,50 @@
-import React, { useState } from "react"
+import React from "react";
+import { useLocation } from "wouter";
+import useForm from "./useForm";
 
-function SearchForm({ onSubmit }) {
-  const [ keyword, setKeyword ] = useState('')
+const RATINGS = ["g", "pg", "pg-13", "r"];
 
-  const handleSubmit = evt => {
-    evt.preventDefault()
-    onSubmit({ keyword })
-  }
+function SearchForm({ initialKeyword = "", initialRating = "" }) {
+  const [location, pushLocation] = useLocation();
 
-  const handleInputChange = evt => {
-    setKeyword(evt.target.value)
-  }
+  const { keyword, rating, updateKeyword, updateRating } = useForm({
+    initialKeyword,
+    initialRating,
+  });
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    pushLocation(
+      location.includes("search")
+        ? `${keyword}/${rating}`
+        : `search/${keyword}/${rating}`
+    );
+  };
+
+  const handleInputChange = (evt) => {
+    updateKeyword(evt.target.value);
+  };
+
+  const handleChangeRating = (evt) => {
+    updateRating(evt.target.value);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-        <button>Buscar</button>
-        <input placeholder="Search a gif..." onChange={handleInputChange} type="text" value={keyword}/>
+      <button>Buscar</button>
+      <input
+        placeholder="Search a gif..."
+        onChange={handleInputChange}
+        type="text"
+        value={keyword}
+      />
+      <select onChange={handleChangeRating} value={rating}>
+        {RATINGS.map((r) => (
+          <option key={r}>{r}</option>
+        ))}
+      </select>
     </form>
-  )
+  );
 }
 
-export default React.memo(SearchForm)
+export default React.memo(SearchForm);
